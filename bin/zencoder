@@ -1,0 +1,2 @@
+#!/bin/bash
+/var/www/sierra/bin/sra-console.php zencoder $1

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE app-config PUBLIC "-//SIERRA//DTD APP CONFIG//EN"
+  "http://sierra-php.googlecode.com/svn/trunk/etc/app-config.dtd">
+<app-config date-format="m/d/Y H:i T" date-only-format="m/d/Y" error-log-file="zencoder.log" include="ZC_Util.php" time-zone="PST8PDT">
+  
+	<db key="zencoder" host="[FILTERED]" name="[FILTERED]" password="[FILTERED]" user="[FILTERED]" />
+  
+	<!-- debug flag (1|0) -->
+	<param id="debug" value="1" />
+	
+	<!-- the max amount of time (minutes) to allow an encoding job to run before setting it's status to timeout -->
+	<param id="timeout" value="240" />
+
+	<!-- the URL to use for constructing callback requests -->
+	<param id="url" type="callback" value="[FILTERED]" />
+	
+	<!-- the S3 bucket where the test assets are stored -->
+	<param id="bucket" type="s3" value="[FILTERED]" />
+	
+	<!-- zencoder credentials -->
+	<param id="key" type="zencoder" value="[FILTERED]" />
+	<param id="pswd" type="zencoder" value="[FILTERED]" />
+	<param id="url" type="zencoder" value="https://app.zencoder.com/api/" />
+	
+	<!-- encoding.com credentials -->
+	<param id="user" type="encodingcom" value="[FILTERED]" />
+	<param id="pswd" type="encodingcom" value="[FILTERED]" />
+	<param id="userId" type="encodingcom" value="[FILTERED]" />
+	<param id="key" type="encodingcom" value="[FILTERED]" />
+	<param id="url" type="encodingcom" value="http://manage.encoding.com/" />
+	
+	<!-- sorenson credentials -->
+	<param id="user" type="sorenson" value="[FILTERED]" />
+	<param id="pswd" type="sorenson" value="[FILTERED]" />
+	<param id="url" type="sorenson" value="http://360services.sorensonmedia.com" />
+	<param id="url-auth" type="sorenson" value="https://360services.sorensonmedia.com/sessions" />
+	
+	<!-- panda credentials -->
+	<param id="cloud" type="panda" value="[FILTERED]" />
+	<param id="key" type="panda" value="[FILTERED]" />
+	<param id="secret" type="panda" value="[FILTERED]" />
+	<param id="api-host" type="panda" value="api.pandastream.com" />
+	
+  <use-entity-model key="app" path="app-model" />
+</app-config>

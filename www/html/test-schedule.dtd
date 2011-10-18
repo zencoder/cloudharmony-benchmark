@@ -1,0 +1,55 @@
+<!--
+XML DTD for the encoding service test schedule. Uses the following doctype:
+
+<!DOCTYPE test-schedule PUBLIC "-//CLOUDHARMONY//DTD ENCODE SERVICE TEST SCHEDULE//EN" 
+  "http://encode.technologyinsight.com/test-schedule.dtd">
+-->
+
+<!--
+The "test-schedule" element is the root element used to define one or more test
+sets
+-->
+<!ELEMENT test-schedule (test-set+)>
+
+<!--
+The "test-set" element defines the frequency and optional start time offset for
+a single set of tests to be performed
+
+  key            the unique identifier for this test set
+
+  frequency      how frequently the tests should be performed
+
+  order          the order in which the tests should be performed - either
+                 random or sequential
+
+  providers      either 'all' or a comma separated list of the ids of the 
+                 providers in the zc_provider table that should be included
+                 in this testing
+  
+  start-offset   the start time offset for testing. this is the amount of time
+                 to wait before starting testing for a given frequency interval
+                 based on when the start time was for the previous interval. 
+                 For example, if the frequency is daily, and the start-offset 
+                 is 60, and testing started a 1:00AM the previous day, then 
+                 testing will start at 2:00AM for the day following
+-->
+<!ELEMENT test-set (test+)>
+<!ATTLIST test-set key          CDATA #REQUIRED>
+<!ATTLIST test-set frequency    (daily|weekly|monthly) "daily">
+<!ATTLIST test-set order        (random|sequential) "sequential">
+<!ATTLIST test-set providers    CDATA "all">
+<!ATTLIST test-set start-offset CDATA "0">
+
+<!--
+The "test" element describes a single test to be performed
+
+  type             the type of test to perform (must be one of the key values
+                   in test-files.ini)
+
+  concurrency      the # of concurrent requests to submit to each provider
+
+-->
+<!ELEMENT test EMPTY>
+<!ATTLIST test     type         CDATA #REQUIRED>
+<!ATTLIST test     concurrency  CDATA "1">
+

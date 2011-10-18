@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE entity-model PUBLIC "-//SIERRA//DTD ENTITY MODEL//EN" 
+  "http://sierra-php.googlecode.com/svn/trunk/lib/model/entity-model.dtd">
+<entity-model db="zencoder" sync-schema="1" vo-suffix="">
+
+  <entity key="ZC_Provider" primary-key="providerId">
+    <attribute key="providerId" depends="required" max-length="16" />
+		<attribute key="harness" depends="required" max-length="64" />
+		<attribute key="name" depends="required" max-length="64" />
+    <attribute key="url" depends="required uri" max-length="128" />
+  </entity>
+
+  <entity key="ZC_EncodingTest" primary-key="testId">
+		<aop>
+       <aspect key="updateTimes" pointcut="dao.update"><![CDATA[
+      // set last update time and update encode time and transfer times when applicable
+			if (ZC_EncodingTest::isValid($record) && $record->isDirty('status')) {
+				$oldStatus = $record->getStatus(TRUE);
+				$newStatus = $record->getStatus();
+				$lastChangeTime = $record->getLastStatusChange();
+				$changeTime = new SRA_GregorianDate();
+				$duration = $changeTime->getUnixTimeStamp() - $lastChangeTime->getUnixTimeStamp();
+				$record->setLastStatusChange($changeTime);
+				// encode time
+				if ($newStatus == 'complete' && $oldStatus == 'encoding') $record->setEncodeTime($duration);
+				// transfer time
+				else if (!$record->__noTransferUpdate && $newStatus == 'encoding' && $oldStatus == 'transfer') $record->setTransferTime($duration);
+			}
+      ]]></aspect>
+		</aop>
+    <attribute key="testId" sequence="1" />
+		<attribute key="providerId" depends="required" max-length="16" />
+		<attribute key="providerJobId" max-length="64" />
+		<attribute key="batchId" type="int" />
+		<attribute key="encodeTime" type="int" />
+		<attribute key="lastStatusChange" default="new SRA_GregorianDate()" type="time" />
+		<attribute key="status" default="transfer" depends="option" max-length="16">
+			<var key="resources" value="test-statuses" />
+		</attribute>
+    <attribute key="started" default="new SRA_GregorianDate()" type="time" />
+		<attribute key="testScheduleId" max-length="32" />
+		<attribute key="transferTime" default="0" type="int" />
+		<attribute key="type" depends="option" max-length="16">
+			<var key="resources" value="test-types" />
+		</attribute>
+  </entity>
+
+  <index key="providerNameIdx" columns="name" table="zc_provider" />
+
+  <index key="encodingTestProviderId" columns="provider_id" table="zc_encoding_test" />
+	<index key="encodingTestBatchId" columns="batch_id" table="zc_encoding_test" />
+	<index key="encodingTestEncodeTime" columns="encode_time" table="zc_encoding_test" />
+	<index key="encodingTestLastStatusChange" columns="last_status_change" table="zc_encoding_test" />
+	<index key="encodingTestProviderJobId" columns="provider_job_id" table="zc_encoding_test" />
+	<index key="encodingTestStatus" columns="status" table="zc_encoding_test" />
+	<index key="encodingTestStarted" columns="started" table="zc_encoding_test" />
+	<index key="encodingTestTransferTime" columns="transfer_time" table="zc_encoding_test" />
+	<index key="encodingTestTestType" columns="type" table="zc_encoding_test" />
+
+  <msg key="maxLength" resource="error.maxLength" />
+  <msg key="numeric" resource="error.numeric" />
+	<msg key="option" resource="error.option" />
+  <msg key="required" resource="error.required" />
+  <msg key="uri" resource="error.uri" />
+  
+</entity-model>

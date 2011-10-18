@@ -1,0 +1,24 @@
+<!DOCTYPE test-schedule PUBLIC "-//CLOUDHARMONY//DTD ENCODE SERVICE TEST SCHEDULE//EN" 
+  "http://encode.technologyinsight.com/test-schedule.dtd">
+<test-schedule>
+	<test-set key="interval1" frequency="daily" order="random" providers="sorenson,panda,encodingcom,zencoder" start-offset="100">
+		<test type="4m_hd_2pass" />
+		<test type="23m_sd_2pass" />
+		<test type="30s_phone_2pass" />
+		<test type="60m_audio" />
+		<test type="4m_hd_2pass" concurrency="4" />
+		<test type="23m_sd_2pass" concurrency="4" />
+		<test type="30s_phone_2pass" concurrency="4" />
+		<test type="60m_audio" concurrency="4" />
+	</test-set>
+	<test-set key="interval2" frequency="daily" order="random" providers="sorenson,panda,encodingcom,zencoder" start-offset="820">
+		<test type="4m_hd_2pass" />
+		<test type="23m_sd_2pass" />
+		<test type="30s_phone_2pass" />
+		<test type="60m_audio" />
+		<test type="4m_hd_2pass" concurrency="4" />
+		<test type="23m_sd_2pass" concurrency="4" />
+		<test type="30s_phone_2pass" concurrency="4" />
+		<test type="60m_audio" concurrency="4" />
+	</test-set>
+</test-schedule>

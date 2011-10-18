@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^callback/(.*) /callback.php?providerId=$1&%{QUERY_STRING}

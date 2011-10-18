@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE squeeze_audience>
+<Output DefaultName="3m_audio.spfx" IsLite="False" IsMBR="False" Name="3m_audio" OutputFormat="MP4OutputFormat" SubOutputFormat="None" UsingCustomFilter="True" Version="6.0">
+    <FileName Value=""/>
+    <OutputExt Value=""/>
+    <OutputAudExt Value=""/>
+    <OutputPrefix Value=""/>
+    <OutputSuffix Value=""/>
+    <UsePrefix Value="True"/>
+    <UseSuffix Value="True"/>
+    <Status Value="Ready"/>
+    <EncodeVideo Value="False"/>
+    <EncodeAudio Value="True"/>
+    <UsePreFilter Value="True"/>
+    <UsePlaybackConfiguration Value="False"/>
+    <UseFilesizeConstraint Value="False"/>
+    <FileSizeConstraint Value="0"/>
+    <AddHintTrack Value="False"/>
+    <InOutPointsLocallyAssigned Value="False"/>
+    <InOutPointsEnable Value="False"/>
+    <Filter Name="Custom">
+    </Filter>
+    <MarkerList>
+    </MarkerList>
+    <Notifications>
+    </Notifications>
+    <AudioCompressor codec="AACAudioCodec">
+        <DataRate Value="96000"/>
+        <SampleRate Value="48000"/>
+        <SampleSize Value="16"/>
+        <ChannelMode Value="ChannelModeStereo"/>
+        <SubOutputFormat Value="None"/>
+        <PacketSizeEnable Value="False"/>
+        <PacketSize Value="1450"/>
+        <MediaKeyEnable Value="False"/>
+        <MediaKey Value=""/>
+    </AudioCompressor>
+</Output>

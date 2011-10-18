@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE squeeze_audience>
+<Output DefaultName="23m_sd_2pass.spfx" IsLite="False" IsMBR="False" Name="23m_sd_2pass" OutputFormat="MP4OutputFormat" SubOutputFormat="None" UsingCustomFilter="True" Version="6.0">
+    <FileName Value=""/>
+    <OutputExt Value=""/>
+    <OutputAudExt Value=""/>
+    <OutputPrefix Value=""/>
+    <OutputSuffix Value=""/>
+    <UsePrefix Value="True"/>
+    <UseSuffix Value="True"/>
+    <Status Value="Ready"/>
+    <EncodeVideo Value="True"/>
+    <EncodeAudio Value="True"/>
+    <UsePreFilter Value="True"/>
+    <UsePlaybackConfiguration Value="False"/>
+    <UseFilesizeConstraint Value="False"/>
+    <FileSizeConstraint Value="0"/>
+    <AddHintTrack Value="False"/>
+    <InOutPointsLocallyAssigned Value="False"/>
+    <InOutPointsEnable Value="False"/>
+    <Filter Name="Custom">
+    </Filter>
+    <MarkerList>
+    </MarkerList>
+    <Notifications>
+    </Notifications>
+    <AudioCompressor codec="AACAudioCodec">
+        <DataRate Value="96000"/>
+        <SampleRate Value="48000"/>
+        <SampleSize Value="16"/>
+        <ChannelMode Value="ChannelModeStereo"/>
+        <SubOutputFormat Value="None"/>
+        <PacketSizeEnable Value="False"/>
+        <PacketSize Value="1450"/>
+        <MediaKeyEnable Value="False"/>
+        <MediaKey Value=""/>
+    </AudioCompressor>
+    <VideoCompressor codec="MCptH264">
+        <DataRate Value="1000000"/>
+        <FrameRate Value="-1"/>
+        <OutputSize Height="480" Width="638"/>
+        <MaintainSourceAspectRatioEnable Value="True"/>
+        <LetterBoxOrPillarEnable Value="False"/>
+        <FrameSizeSameAsSourceEnable Value="True"/>
+        <BitRateMode Value="BitRateModeTwoPassVBR"/>
+        <KeyFrameRateEnable Value="True"/>
+        <KeyFrameRate Value="120"/>
+        <AutoKeyFrameEnable Value="True"/>
+        <AutoKeyFrameSensitivity Value="66"/>
+        <MaxDataRatePercentEnable Value="False"/>
+        <MaxDataRatePercent Value="200"/>
+    </VideoCompressor>
+</Output>
